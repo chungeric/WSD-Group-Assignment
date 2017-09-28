@@ -108,20 +108,20 @@ public class Tutors implements Serializable {
         return tutorList;
     }
     
-    public void writeXMLFile(ArrayList<Tutor> tutors) {
-        try {
-            StreamSource xmlSource = new StreamSource( new File("WEB-INF/tutors.xml"));
-            StreamSource xsltSource = new StreamSource( new File("WEB-INF/tutors.xsl"));
-            StreamResult fileResult = new StreamResult(new FileOutputStream("WEB-INF/output.xml"));
-            
-            TransformerFactory tfFactory = TransformerFactory.newInstance();
-            Transformer tf = tfFactory.newTransformer(xsltSource);
-            tf.transform(xmlSource, fileResult);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    }
+//    public void writeXMLFile(ArrayList<Tutor> tutors) {
+//        try {
+//            StreamSource xmlSource = new StreamSource( new File("WEB-INF/tutors.xml"));
+//            StreamSource xsltSource = new StreamSource( new File("WEB-INF/tutors.xsl"));
+//            StreamResult fileResult = new StreamResult(new FileOutputStream("WEB-INF/output.xml"));
+//            
+//            TransformerFactory tfFactory = TransformerFactory.newInstance();
+//            Transformer tf = tfFactory.newTransformer(xsltSource);
+//            tf.transform(xmlSource, fileResult);
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        
+//    }
     
 }

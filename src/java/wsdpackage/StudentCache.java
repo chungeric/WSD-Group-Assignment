@@ -21,7 +21,8 @@ public class StudentCache {
     public String getFilePath() {
         return filePath;
     }
-     public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
+    
+    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Students.class);
         Unmarshaller u = jc.createUnmarshaller();
@@ -31,7 +32,7 @@ public class StudentCache {
         fin.close();
     }
     
-        public void updateXML(Students student, String filePath) throws Exception {
+    public void updateXML(Students student, String filePath) throws Exception {
         this.students = student;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Students.class);

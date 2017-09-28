@@ -13,7 +13,7 @@ public class TutorCache {
     
     public TutorCache() {}
     
-public TutorCache(String filePath, Tutors tutors) {
+    public TutorCache(String filePath, Tutors tutors) {
         this.filePath = filePath;
         this.tutors = tutors;
     }
@@ -21,7 +21,7 @@ public TutorCache(String filePath, Tutors tutors) {
     public String getFilePath() {
         return filePath;
     }
-     public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
+    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Tutors.class);
         Unmarshaller u = jc.createUnmarshaller();
@@ -31,7 +31,7 @@ public TutorCache(String filePath, Tutors tutors) {
         fin.close();
     }
     
-        public void updateXML(Tutors tutor, String filePath) throws Exception {
+    public void updateXML(Tutors tutor, String filePath) throws Exception {
         this.tutors = tutor;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Tutors.class);
@@ -40,8 +40,8 @@ public TutorCache(String filePath, Tutors tutors) {
         FileOutputStream fout = new FileOutputStream(filePath);
         m.marshal(tutors, fout);
         fout.close();
-    } 
-
+    }
+    
     public Tutors getTutors() {
         return tutors;
     }
