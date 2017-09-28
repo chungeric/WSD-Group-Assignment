@@ -1,0 +1,98 @@
+body {
+    font: 12pt Helvetica;
+    color: #272727;
+    background-color: #80D2DF;
+    line-height: 150%;
+}
+
+h1 {
+    font-size: 36pt;
+    text-align: center;
+    line-height: 150%;
+}
+
+a:link, a:active, a:visited {
+    text-decoration: none;
+    color: #5DBCCB;
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    width: 7em;
+}
+
+input[type=text], input[type=password] {
+    font-size: 12pt;
+    width: 15em;
+    height: 1.8em;
+    border: 3px solid #CCCCCC;
+    padding: 0.5m;
+    margin-bottom: 1em;
+}
+
+#logo {
+    color: #FFFFFF;
+    position: relative;
+    left: 1em;
+    top: 0.5em;
+    font-size: 36pt;
+    font-weight: bold;
+    text-align: left;  
+    height: inherit;
+}
+
+#topBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    background-color: #80D2DF;
+}
+
+#content {
+    position: absolute;
+    left: 30%;
+    top: 25%;
+    width: 40%;
+    height: 25em;
+    
+    background-color: #FFFFFF;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px #657578;
+}
+
+#navBar {
+    position: absolute;
+    top: 1em;
+    right: 3em;
+    width: 70%;
+    font: 18pt Helvetica;
+    text-align: right;
+}
+
+a.navLink:link, a.navLink:active, a.navLink:visited {
+    text-decoration: none;
+    color: #FFFFFF;
+    text-align: center;
+    font: 18pt Helvetica;
+    text-align: center;
+    margin-right: 3em;
+}
+
+.button {
+    position: relative;
+    top: 3em;
+    font-size: 14pt;
+    color: #272727;
+    background-color: #ECECEC;
+    border: 3px solid #5DBCCB;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.button:hover {
+    border: 3px solid #366B73;
+}

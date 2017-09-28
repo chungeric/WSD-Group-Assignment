@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl href="WEB-INF/tutors.xsl"?>
+
+<tutors>
+    
+        <tutor>
+            <name>Chris Burney</name>
+            <email>chrisburney@tutor.com</email>
+            <password>password</password>
+            <dob>02/11/1968</dob>
+            <userType>Tutor</userType>
+            <subject>WSD</subject>
+            <status>Available</status>
+        </tutor>
+
+        <tutor>
+            <name>Selina Madrid</name>
+            <email>smadrid@tutor.com</email>
+            <password>password123</password>
+            <dob>29/04/1986</dob>
+            <userType>Tutor</userType>
+            <subject>USP</subject>
+            <status>Available</status>
+        </tutor>
+
+        <tutor>
+            <name>Maxwell Parra</name>
+            <email>maxparra@tutor.com</email>
+            <password>password123</password>
+            <dob>12/08/70</dob>
+            <userType>Tutor</userType>
+            <subject>SEP</subject>
+            <status>Available</status>
+        </tutor>
+
+        <tutor>
+            <name>Jonah Stockton</name>
+            <email>jstockton@tutor.com</email>
+            <password>password123</password>
+            <dob>09/09/1979</dob>
+            <userType>Tutor</userType>
+            <subject>AppProg</subject>
+            <status>Available</status>
+        </tutor>
+
+        <tutor>
+            <name>Martin Silver</name>
+            <email>martinsilver@tutor.com</email>
+            <password>password123</password>
+            <dob>22/10/1985</dob>
+            <userType>Tutor</userType>
+            <subject>MobileApp</subject>
+            <status>Available</status>
+        </tutor>
+    
+</tutors>

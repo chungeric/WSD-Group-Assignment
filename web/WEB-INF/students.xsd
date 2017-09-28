@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified">
+    
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Z][a-z]+\s)+([A-Z][a-z]+)"/>            
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z\._]+[@]([a-z-]+)([\.][a-z-]+)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".{6,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="dob">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+<xs:element name="students">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="student" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="name"/>
+                            <xs:element name="email" type="email"/>
+                            <xs:element name="password" type="password"/>
+                            <xs:element name="dob" type="dob"/>
+                            <xs:element name="userType" type="xs:string"/>         
+                        </xs:sequence>             
+                    </xs:complexType>
+                </xs:element>
+                
+            </xs:sequence>
+        </xs:complexType>
+</xs:element>
+
+</xs:schema>

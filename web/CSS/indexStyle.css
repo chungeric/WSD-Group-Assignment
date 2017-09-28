@@ -1,0 +1,56 @@
+body {
+    font: 12pt Helvetica;
+    color: #272727;
+    background-color: #80D2DF;
+    line-height: 150%;
+}
+
+h1 {
+    font-size: 36pt;
+    text-align: center;
+}
+
+a:link, a:active, a:visited {
+    text-decoration: none;
+}
+
+label {
+    display: inline-block;
+    width: 7em;
+}
+
+input[type=text] {
+    font-size: 12pt;
+    height: 1.8em;
+    border: 3px solid #CCCCCC;
+    padding: 0.5m;
+    margin-bottom: 1em;
+}
+
+#content {
+    position: absolute;
+    left: 30%;
+    top: 25%;
+    width: 40%;
+    height: 23em;
+    
+    background-color: #FFFFFF;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px #657578;
+}
+
+.button {
+    position: relative;
+    top: 3em;
+    font-size: 14pt;
+    color: #272727;
+    background-color: #ECECEC;
+    border: 3px solid #5DBCCB;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.button:hover {
+    border: 3px solid #366B73;
+}

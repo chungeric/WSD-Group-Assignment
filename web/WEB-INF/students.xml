@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    
+    <student>
+        <name>Steven Walker</name>
+        <email>swalker@student.com</email>
+        <password>password</password>
+        <dob>03/04/1993</dob>
+        <userType>Student</userType>
+    </student>
+    
+    <student>
+        <name>Lillian Adams</name>
+        <email>ladams2@student.com</email>
+        <password>password123</password>
+        <dob>12/08/1996</dob>
+        <userType>Student</userType>
+    </student>
+    
+    <student>
+        <name>Todd Morris</name>
+        <email>tmorris10@student.com</email>
+        <password>pw12345</password>
+        <dob>26/12/1997</dob>
+        <userType>Student</userType>
+    </student>
+    
+    <student>
+        <name>Fred Nelson</name>
+        <email>fred_nelson@email.com</email>
+        <password>pW*1234</password>
+        <dob>04/02/1997</dob>
+        <userType>Student</userType>
+    </student>
+    
+    <student>
+        <name>Wendy Clark</name>
+        <email>wendy-nelson@student.com</email>
+        <password>!@#pw123</password>
+        <dob>27/11/96</dob>
+        <userType>Student</userType>
+    </student>
+    
+    
+</students>
