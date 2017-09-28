@@ -4,11 +4,7 @@
     Author     : ericchung
 --%>
 
-<%@page import="wsdpackage.Bookings"%>
-<%@page import="wsdpackage.Student"%>
-<%@page import="java.util.Random"%>
-<%@page import="wsdpackage.Tutor"%>
-<%@page import="wsdpackage.Booking"%>
+<%@page import="wsdpackage.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +25,7 @@
         
         <%    
             String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");  
-            String tutorsFilePath = application.getRealPath("WEB-INF/bookings.xml");
+            String tutorsFilePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
         <jsp:useBean id="bookingCache" class="wsdpackage.BookingCache" scope="application">
         <jsp:setProperty name="bookingCache" property="filePath" value="<%=bookingsFilePath%>"/>
@@ -45,8 +41,8 @@
         
         <%
             Bookings bookings = bookingCache.getBookings();
-            
-            Tutor tutor = tutorCache.getTutors().getTutorEmail(tutorEmail);
+            Tutors tutors = tutorCache.getTutors();
+            Tutor tutor = tutors.getTutorEmail(tutorEmail);
             
             // The tutor exists and is available, we can create a booking with them
             if (tutor != null && tutor.getStatus().equals("Available")) {
@@ -57,10 +53,10 @@
                 int bookingID = bookingCache.getBookings().getList().size() + 1;
                 
                 // need to update tutor's status to Unavailable
-                // maybe marshalling and unmarshalling?
+                tutor.setStatus("Unavailable");
+                tutorCache.updateXML(tutors, tutorsFilePath);
                 
-                
-                
+                // add booking to bookings.xml
                 Booking booking = new Booking(bookingID, tutorName, tutorEmail, tutorSubject, studentName, studentEmail, "active");
                 bookings.addBooking(booking);
                 bookingCache.updateXML(bookings, bookingsFilePath);

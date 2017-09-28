@@ -127,6 +127,11 @@
                                 </form>
 
                                 <form method="POST" action="completeBookingAction.jsp">
+                                    <input type="hidden" name="bookingID">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="bookingID" />
+                                        </xsl:attribute>
+                                    </input>
                                     <input type="submit" value="Complete booking"/>
                                 </form>
                                 

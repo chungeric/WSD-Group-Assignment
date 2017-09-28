@@ -1,6 +1,5 @@
 
-<%@page import="wsdpackage.Booking"%>
-<%@page import="wsdpackage.Bookings"%>
+<%@page import="wsdpackage.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,7 @@
     <body>
         
         <%
+            
             int bookingID = Integer.parseInt(request.getParameter("bookingID"));
             
             String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");
@@ -27,14 +27,30 @@
         
         <%
             Bookings bookings = bookingCache.getBookings();
+            Tutors tutors = tutorCache.getTutors();
+            
+            // gets booking to cancel using bookingID
+            
             Booking booking = bookings.getBookingID(bookingID);
             
-            // Change bookingStatus from active to cancelled and update XML
-            // Change tutorStatus from Unavailable to Available and update XML
+            // gets the tutor associated with this booking we are trying to cancel
             
-
-
-
+            Tutor tutor = tutors.getTutorEmail(booking.getTutorEmail());
+            
+            // Change bookingStatus from active to cancelled and update bookings.xml
+            
+            booking.setBookingStatus("cancelled");
+            bookingCache.updateXML(bookings, bookingsFilePath);
+            
+            // Change tutorStatus from Unavailable to Available and update tutors.xml
+            
+            tutor.setStatus("Available");
+            tutorCache.updateXML(tutors, tutorFilePath);
+            
+            
+            // XML is updating too slowly, on redirect the change doesn't appear
+            // straight away. Maybe find a way to do this line only once the XML updates have been made?
+            response.sendRedirect("bookings.jsp");
         %>
         
     </body>

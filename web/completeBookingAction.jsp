@@ -29,15 +29,26 @@
         
         <%
             Bookings bookings = bookingCache.getBookings();
-            
+            Tutors tutors = tutorCache.getTutors();
+
+            // gets booking to complete using bookingID
             Booking booking = bookings.getBookingID(bookingID);
             
-            // Change bookingStatus from active to completed and update XML
-            // Set tutorStatus from Unavailable to Available and update XML
-
+            // gets the tutor associated with this booking we are trying to complete
             
-
-
+            Tutor tutor = tutors.getTutorEmail(booking.getTutorEmail());
+            
+            // Change bookingStatus from active to completed and update bookings.xml
+            
+            booking.setBookingStatus("completed");
+            bookingCache.updateXML(bookings, bookingsFilePath);
+            
+            // Change tutorStatus from Unavailable to Available and update tutors.xml
+            
+            tutor.setStatus("Available");
+            tutorCache.updateXML(tutors, tutorFilePath);
+            
+            response.sendRedirect("bookings.jsp");
 
         %>
         
