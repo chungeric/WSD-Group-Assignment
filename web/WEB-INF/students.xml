@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<students xmlns="http://localhost/WSD-Group-Assignment"
+<!--<students xmlns="http://localhost/WSD-Group-Assignment"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://localhost/WSD-Group-Assignment students.xsd"> 
-    
+xsi:schemaLocation="http://localhost/WSD-Group-Assignment students.xsd"> -->
+<students>
     <student>
         <name>Steven Walker</name>
         <email>swalker@student.com</email>

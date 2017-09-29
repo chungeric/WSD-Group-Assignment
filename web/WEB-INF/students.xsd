@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
-<xs:schema
+<!--<xs:schema
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  targetNamespace="http://localhost/WSD-Group-Assignment"
  xmlns="http://localhost/WSD-Group-Assignment"
+ elementFormDefault="qualified">-->
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
  elementFormDefault="qualified">
-    
     <xs:simpleType name="name">
         <xs:restriction base="xs:string">
             <xs:pattern value="([A-Z][a-z]+\s)+([A-Z][a-z]+)"/>            
