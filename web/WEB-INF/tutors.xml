@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl href="WEB-INF/tutors.xsl"?>
+<tutors xmlns="http://localhost/WSD-Group-Assignment"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://localhost/WSD-Group-Assignment tutors.xsd"> 
 
-<tutors>
-    
         <tutor>
             <name>Chris Burney</name>
             <email>chrisburney@tutor.com</email>

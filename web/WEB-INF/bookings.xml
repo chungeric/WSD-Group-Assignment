@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<bookings>
+<bookings xmlns="http://localhost/WSD-Group-Assignment"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://localhost/WSD-Group-Assignment bookings.xsd"> 
     <!--Sample bookings in project folder-->
 </bookings>
 
