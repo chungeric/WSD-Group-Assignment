@@ -9,10 +9,15 @@
         <title>WSD - Assignment 1: Create Booking Page</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+                
+                if (session.getAttribute("student")!=null) {
+        %>
+        
         
         <%
-            Student student = (Student) session.getAttribute("student");
-            Tutor tutor = (Tutor) session.getAttribute("tutor");
             
             String email = request.getParameter("email");
             String name = request.getParameter("name");
@@ -57,5 +62,20 @@
             </form>
             Remember: display tutor is not available or tutor does not exist error messages if booking fails
         </div>
+    
+                    
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    // even if logged in, users should not be able to access this page
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

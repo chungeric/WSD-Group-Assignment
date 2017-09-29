@@ -13,21 +13,25 @@
         <title>WSD - Assignment 1: Login Status</title>
     </head>
     <body>
-    <%
-        // ---- Get the xml files containing the students and the tutors ---- /
-        String studentFilePath = application.getRealPath("WEB-INF/students.xml");
-        String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
-    %>
-    
-    <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
-    <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
-    </jsp:useBean>
-    
-    <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
-    <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
-    </jsp:useBean>
+        
+        
+        
+        <%
+            // ---- Get the xml files containing the students and the tutors ---- /
+            String studentFilePath = application.getRealPath("WEB-INF/students.xml");
+            String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
+        %>
+
+        <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
+        <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
+        </jsp:useBean>
+
+        <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
+        <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
+        </jsp:useBean>
 
         <%
+            
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             
@@ -46,7 +50,7 @@
             // check if login with email and password was successful
             // if it's not successful, go back to the login page
             if (student == null && tutor == null) {
-                session.setAttribute("existErr", "User does not exist");
+                //session.setAttribute("existErr", "User does not exist");
                 response.sendRedirect("login.jsp");
             }
             

@@ -8,6 +8,17 @@
         <title>cancelBooking action page</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            // checks that a student / tutor is logged on
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+
+                // if user is logged in, but tried to access this url
+                // without clicking a cancel button, they should be sent away (to main.jsp)
+                if (request.getParameter("bookingID")!=null) {
+                
+        %>
+        
         
         <%
             
@@ -53,5 +64,19 @@
             response.sendRedirect("bookings.jsp");
         %>
         
+        
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    // even if logged in, users should not be able to access this page
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

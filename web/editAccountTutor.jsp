@@ -11,6 +11,14 @@
         <title>WSD - Assignment 1: Main Page for Tutors</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("tutor")!=null) {
+                
+                if (request.getParameter("name")!=null && request.getParameter("password")!=null
+                        && request.getParameter("dob")!=null) {
+        %>
+        
         
            <% String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml"); %>  
            
@@ -37,6 +45,19 @@
                 
             //Update and go back to the tutor's account page
             response.sendRedirect("accountTutor.jsp");
+        %>
+        
+        
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                response.sendRedirect("index.jsp");
+            }
         %>
     </body>
 </html>

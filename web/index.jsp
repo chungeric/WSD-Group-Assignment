@@ -6,7 +6,11 @@
         <link rel="stylesheet" type="text/css" href="CSS/indexStyle.css">
         <title>WSD - Assignment 1: Index</title>
     </head>
-    <body>
+    <body> 
+        <%
+            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+        %>
+        
         <div id="content">
             <h1>UTSTutor</h1>
             <center>
@@ -25,5 +29,13 @@
             <a href="register.jsp" class="button">Register</a>
             </center>
         </div>
+        
+        
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                response.sendRedirect("main.jsp");
+            }
+        %>
     </body>
 </html>

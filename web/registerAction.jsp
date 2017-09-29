@@ -10,18 +10,25 @@
         <title>WSD - Assignment 1: Register Action</title>
     </head>
     <body>
-   <% String studentFilePath = application.getRealPath("WEB-INF/students.xml"); %>  
-   <% String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml"); %> 
+        <%
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+                
+                if (request.getParameter("formCheck")!=null) {
+        %>
+        
+        <% String studentFilePath = application.getRealPath("WEB-INF/students.xml"); %>  
+        <% String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml"); %> 
+
+        <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
+        <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
+        </jsp:useBean>
+
+        <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
+        <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
+        </jsp:useBean>
    
-    <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
-    <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
-    </jsp:useBean>
-   
-    <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
-    <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
-    </jsp:useBean>
-   
-    <%     
+        <%     
             // Grab list of students from the Students XML file
             Students students = studentCache.getStudents();
             // Grab list of tutors from the Tutors XML file
@@ -72,5 +79,17 @@
 
         %>
         
+        
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    response.sendRedirect("index.jsp");
+                }
+
+            } else {
+                response.sendRedirect("main.jsp");
+            }
+        %>
     </body>
 </html>

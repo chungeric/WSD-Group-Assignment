@@ -7,6 +7,9 @@
         <title>WSD - Assignment 1: Initial Register Page</title>
     </head>
     <body>
+        <%
+            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+        %>
         
         <div id="topBar">
             <span>
@@ -27,6 +30,10 @@
             
             <form method="POST" action="registerAction.jsp">
                 <table>
+                    <tr>
+                        <td>Full Name:</td>
+                        <td><input type="hidden" name="formCheck" value="check"></td>
+                    </tr>
                     <tr>
                         <td>Full Name:</td>
                         <td><input type="text" name="name" placeholder="e.g. John Smith"></td>
@@ -87,6 +94,13 @@
 
         </div>
     
+                
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                response.sendRedirect("main.jsp");
+            }
+        %>
     <script src="JavaScript/register.js"></script>
     </body>
 </html>

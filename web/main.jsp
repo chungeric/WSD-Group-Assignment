@@ -15,6 +15,11 @@
         <title>WSD - Assignment 1: Main Page for Students</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+        %>
+        
         
         <%   String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml"); %>
         <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
@@ -103,6 +108,13 @@
             %>
         </div>
     
-    <!-- <script src="JavaScript/main.js"></script> -->
+        
+        
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

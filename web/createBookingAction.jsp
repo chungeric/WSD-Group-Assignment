@@ -13,6 +13,17 @@
         <title>createBookingAction</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            // checks that a student / tutor is logged on
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+
+                // if TUTOR is logged in, but tried to access this url
+                // without clicking a book tutor button, they should be sent away (to main.jsp)
+                if (session.getAttribute("student")!=null && request.getParameter("email")!=null) {
+                
+        %>
+        
         
         <%  
             
@@ -68,5 +79,18 @@
         %>
         
         
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    // even if logged in, users should not be able to access this page
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

@@ -13,7 +13,12 @@
         <title>WSD - Assignment 1: Bookings Page</title>
     </head>
     <body>
-
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+        %>
+        
+        
         <%
             Student student = (Student) session.getAttribute("student");
             Tutor tutor = (Tutor) session.getAttribute("tutor");
@@ -74,7 +79,14 @@
                 <%  }  %>
             </div>
         </div>
-    
+            
+            
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        %>
     <script src="JavaScript/bookings.js"></script>
     </body>
 </html>

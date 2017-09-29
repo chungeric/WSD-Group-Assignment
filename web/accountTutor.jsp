@@ -10,6 +10,14 @@
         <title>WSD - Assignment 1: Account Page for Tutors</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+                
+                // only tutors can access this page
+                if (session.getAttribute("tutor")!=null) {
+        %>
+        
         
         <%
             // Grab the tutor data stored in the java bean
@@ -50,6 +58,21 @@
                 <b>Status:</b> <%=tutor.getStatus()%><br><br>
                 
         </div>
-        <script src="JavaScript/accountStudentJS.js"></script>
+        
+                
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    // only tutors can access this page
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
+    <script src="JavaScript/accountStudentJS.js"></script>
     </body>
 </html>

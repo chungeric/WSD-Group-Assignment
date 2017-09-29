@@ -10,8 +10,17 @@
         <title>WSD - Assignment 1: Account Page for Students</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+                
+                // only students can access this page
+                if (session.getAttribute("student")!=null) {
+        %>
+        
         
         <%
+            
             // Grab the student data stored in the java bean
             Student student = (Student) session.getAttribute("student");
         %>
@@ -51,6 +60,20 @@
 
 
         </div>
+                
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    // only students can access this page
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <script src="JavaScript/accountStudentJS.js"></script>
     </body>
 </html>

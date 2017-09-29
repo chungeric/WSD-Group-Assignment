@@ -11,12 +11,19 @@
         <title>WSD - Assignment 1: Main Page for Tutors</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null) {
+                
+                if (request.getParameter("name")!=null && request.getParameter("password")!=null
+                        && request.getParameter("dob")!=null) {
+        %>
         
-           <% String studentFilePath = application.getRealPath("WEB-INF/students.xml"); %>  
-           
-            <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
-            <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
-            </jsp:useBean>
+        
+        <% String studentFilePath = application.getRealPath("WEB-INF/students.xml"); %>  
+        <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
+        <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
+        </jsp:useBean>
         <%
             // Grab the list of students from the Students XML
             Students students = studentCache.getStudents();
@@ -37,6 +44,19 @@
             
             //Update and go back to the student's account page
             response.sendRedirect("accountStudent.jsp");
+        %>
+        
+        
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    response.sendRedirect("main.jsp");
+                }
+
+            } else {
+                response.sendRedirect("index.jsp");
+            }
         %>
     </body>
 </html>

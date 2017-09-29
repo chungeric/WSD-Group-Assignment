@@ -7,7 +7,9 @@
         <title>WSD - Assignment 1: Login</title>
     </head>
     <body>
-        
+        <%
+            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+        %>
         <div id="topBar">
             <span>
                 <a href="index.jsp" id="logo">UTSTutor</a>
@@ -28,5 +30,12 @@
             </form>  
             </center>
         </div>
+        
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                response.sendRedirect("main.jsp");
+            }
+        %>
     </body>
 </html>
