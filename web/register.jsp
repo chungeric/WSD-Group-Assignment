@@ -8,6 +8,19 @@
     </head>
     <body>
         <%
+            String nameErrorMsg = (String) session.getAttribute("nameErrorMsg");
+            String emailErrorMsg = (String) session.getAttribute("emailErrorMsg");
+            String passwordErrorMsg = (String) session.getAttribute("passwordErrorMsg");
+            String dobErrorMsg = (String) session.getAttribute("dobErrorMsg");
+            String subjectErrorMsg = (String) session.getAttribute("subjectErrorMsg");
+            
+            if (nameErrorMsg == null || emailErrorMsg == null || passwordErrorMsg == null || dobErrorMsg == null || subjectErrorMsg == null) {
+                nameErrorMsg = "";
+                emailErrorMsg = "";
+                passwordErrorMsg = "";
+                dobErrorMsg = "";
+                subjectErrorMsg = "";
+            }
             if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
         %>
         
@@ -32,23 +45,27 @@
                 <table>
                     <tr>
                         <td>Full Name:</td>
-                        <td><input type="hidden" name="formCheck" value="check"></td>
+                        <td><input type="hidden" name="formCheck" value="check"><span class="errorText"></span></td>
                     </tr>
                     <tr>
                         <td>Full Name:</td>
                         <td><input type="text" name="name" placeholder="e.g. John Smith"></td>
+                        <td><span class="errorText"><%=nameErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td>Email:</td>
                         <td><input type="text" name="email" placeholder="e.g. johnsmith@email.com"></td>
+                        <td><span class="errorText"><%=emailErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="password" name="password"></td>
+                        <td><input type="password" name="password"><span class="errorText"></span></td>
+                        <td><span class="errorText"><%=passwordErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td>Date of Birth:</td>
-                        <td><input type="date" name="dob"></td>
+                        <td><input type="date" name="dob"><span class="errorText"></span></td>
+                        <td><span class="errorText"><%=dobErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td>User Type:</td>
@@ -71,6 +88,7 @@
                                 <option>MobileApp</option>
                             </select>
                         </td>
+                        <td><span class="errorText"><%=subjectErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td><input type="Submit" value="Submit" class="button"></td>

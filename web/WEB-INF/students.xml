@@ -37,7 +37,7 @@ xsi:schemaLocation="http://localhost/WSD-Group-Assignment students.xsd"> -->
     
     <student>
         <name>Wendy Clark</name>
-        <email>wendy-nelson@student.com</email>
+        <email>wendy-clark@student.com</email>
         <password>!@#pw123</password>
         <dob>27/11/96</dob>
         <userType>Student</userType>

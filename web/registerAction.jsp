@@ -2,6 +2,7 @@
 <%@ page import="wsdpackage.Student"%>
 <%@page import="wsdpackage.Tutors"%>
 <%@ page import="wsdpackage.Tutor"%>
+<%@ page import="wsdpackage.DataValidator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,12 @@
             Students students = studentCache.getStudents();
             // Grab list of tutors from the Tutors XML file
             Tutors tutors = tutorCache.getTutors();
+            
+            session.setAttribute("nameErrorMsg", "");
+            session.setAttribute("emailErrorMsg", "");
+            session.setAttribute("passwordErrorMsg", "");
+            session.setAttribute("dobErrorMsg", "");
+            session.setAttribute("subjectErrorMsg", "");
 
             String name = request.getParameter("name");
             String email = request.getParameter("email"); 
@@ -41,6 +48,7 @@
             String userType = request.getParameter("userType");
             String subject = request.getParameter("subject");
             String status = "Available";
+            DataValidator validator = new DataValidator();
                         
             // First, we need to check if a student or tutor already has the same email which was inputted by the user
             Student potentialStudent = students.checkForDuplicate(email);
@@ -51,6 +59,28 @@
             if ((potentialStudent != null) || (potentialTutor != null)) {
                 response.sendRedirect("register.jsp");            
             }
+            
+            else if (!validator.validateName(name) || !validator.validateEmail(email) || !validator.validatePassword(password) || !validator.validateDob(dob)) {
+                    if (!validator.validateName(name)) {
+                        session.setAttribute("nameErrorMsg", "Please begin each name with a capital letter and only use letters.");
+                    }  
+                    if (!validator.validateEmail(email)) {
+                    session.setAttribute("emailErrorMsg", "Invalid email address");         
+                    }
+                    if (!validator.validatePassword(password)) {
+                    session.setAttribute("passwordErrorMsg", "Invalid password");         
+                    }  
+                    if (!validator.validateDob(dob)) {
+                    session.setAttribute("dobErrorMsg", "Invalid date of birth");         
+                    }  
+ 
+                response.sendRedirect("register.jsp");  
+            }
+            
+            /*else if (!validator.validateEmail(email)) {
+                session.setAttribute("emailErrorMsg", "Incorrect email format");         
+                response.sendRedirect("register.jsp");  
+            }*/
             
             // If the user's email doesn't match anyone in the XML files, and if they selected "Student" as their user type, let's register them.
             else if (userType.equals("Student")) {
@@ -65,10 +95,16 @@
             
             // If the user's email doesn't match anyone in the XML files, and if they selected "Tutor" as their user type, let's register them.
             else {
-                if (subject.equals("")) {
+                if (!validator.validateSubject(subject))
+                {
+                    session.setAttribute("subjectErrorMsg", "Please choose a subject");
+                    response.sendRedirect("register.jsp");
+                }
+                /*if (subject.equals("")) {
                     session.setAttribute("specialtyErr", "Select your subject of specialty");
                     response.sendRedirect("register.jsp");  
-                } else {
+                }*/
+                else {
                     Tutor tutor = new Tutor(name, email, password, dob, userType, subject, status);
                     session.setAttribute("tutor", tutor);
                     tutors.addTutor(tutor);

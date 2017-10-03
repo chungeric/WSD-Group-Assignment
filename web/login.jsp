@@ -8,7 +8,18 @@
     </head>
     <body>
         <%
+            String emailErrorMsg = (String) session.getAttribute("emailErrorMsg");
+            String passwordErrorMsg = (String) session.getAttribute("passwordErrorMsg");
+            String existErrorMsg = (String) session.getAttribute("existErrorMsg");
+            
+            if (emailErrorMsg == null || passwordErrorMsg == null || existErrorMsg == null) {
+                emailErrorMsg = "";
+                passwordErrorMsg = "";
+                existErrorMsg = "";
+            }
+            
             if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+
         %>
         <div id="topBar">
             <span>
@@ -22,9 +33,10 @@
         <div id="content">
             <h1>UTSTutor - Login</h1>
             <center>
+                <span class="errorText"><%=existErrorMsg%></span><br>
             <form method="POST" action="loginAction.jsp">
-                <label>Email Address:</label> <input type="text" name="email" placeholder="e.g. johnsmith@email.com"><br>
-                <label>Password:</label> <input type="password" name="password"><br>            
+                <label>Email Address:</label> <input type="text" name="email" placeholder="e.g. johnsmith@email.com"> <span class="errorText"><%=emailErrorMsg%></span><br>
+                <label>Password:</label> <input type="password" name="password"> <span class="errorText"><%=passwordErrorMsg%></span> <br>            
                 Don't have an account yet? Click <a href="register.jsp">here</a> to register.<br>
                 <input type="Submit" value="Login" class="button">
             </form>  
@@ -33,9 +45,11 @@
         
         <%  
             // ROUTE PROTECTION
-            } else {
+            }
+         else {
                 response.sendRedirect("main.jsp");
             }
+
         %>
     </body>
 </html>

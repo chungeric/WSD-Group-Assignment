@@ -73,6 +73,7 @@ input[type=text], input[type=password] {
     text-align: right;
 }
 
+
 a.navLink:link, a.navLink:active, a.navLink:visited {
     text-decoration: none;
     color: #FFFFFF;
@@ -80,6 +81,12 @@ a.navLink:link, a.navLink:active, a.navLink:visited {
     font: 18pt Helvetica;
     text-align: center;
     margin-right: 3em;
+}
+
+.errorText {
+    font-size: 8pt;
+    font-style: italic;
+    color: #FF0000;
 }
 
 .button {

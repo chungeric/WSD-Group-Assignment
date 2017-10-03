@@ -2,6 +2,7 @@
 <%@page import="wsdpackage.Students"%>
 <%@page import="wsdpackage.Tutors"%>
 <%@page import="wsdpackage.Tutor"%>
+<%@page import="wsdpackage.DataValidator"%>
 
 <%@ page import = "java.io.*,java.util.*" %>
 
@@ -45,12 +46,33 @@
             
             
             // ADD VALIDATION HERE USING VALIDATOR CLASS
-            // ######
+            DataValidator validator = new DataValidator();
+            session.setAttribute("emailErrorMsg", "");
+            session.setAttribute("passwordErrorMsg", "");
+            session.setAttribute("existErrorMsg", "");
+            
+            if (!validator.validateEmail(email)) {
+                session.setAttribute("emailErrorMsg", "Incorrect email");
+                    if (!validator.validatePassword(password)) {
+                    session.setAttribute("passwordErrorMsg", "Incorrect password");         
+                    }
+                response.sendRedirect("login.jsp");  
+            }
+            
+            else if (!validator.validateEmail(email)) {
+                session.setAttribute("emailErrorMsg", "Incorrect email");         
+                response.sendRedirect("login.jsp");  
+            }
+            
+            else if (!validator.validatePassword(password)) {
+                session.setAttribute("passwordErrorMsg", "Incorrect password");         
+                response.sendRedirect("login.jsp");  
+            }
             
             // check if login with email and password was successful
             // if it's not successful, go back to the login page
-            if (student == null && tutor == null) {
-                //session.setAttribute("existErr", "User does not exist");
+            else if (validator.validateEmail(email) && validator.validatePassword(password) && student == null && tutor == null) {
+                session.setAttribute("existErrorMsg", "Your email or password is incorrect");
                 response.sendRedirect("login.jsp");
             }
             

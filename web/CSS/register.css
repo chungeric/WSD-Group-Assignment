@@ -88,3 +88,9 @@ select {
     font-size: 20pt;
     color: #FFFF00;
 }
+
+.errorText {
+    font-size: 8pt;
+    font-style: italic;
+    color: #FF0000;
+}
