@@ -43,7 +43,7 @@
             studentCache.updateXML(students, studentFilePath);
             
             //Update and go back to the student's account page
-            response.sendRedirect("accountStudent.jsp");
+            response.sendRedirect("account.jsp");
         %>
         
         

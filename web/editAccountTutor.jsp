@@ -44,7 +44,7 @@
             tutorCache.updateXML(tutors, tutorFilePath);
                 
             //Update and go back to the tutor's account page
-            response.sendRedirect("accountTutor.jsp");
+            response.sendRedirect("account.jsp");
         %>
         
         

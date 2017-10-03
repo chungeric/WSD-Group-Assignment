@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<bookings xmlns="http://localhost/WSD-Group-Assignment"
+<?xml-stylesheet type="text/xsl" href="bookings.xsl"?>
+<!--<bookings xmlns="http://www.uts.edu.au/31284/wsd-assg1"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://localhost/WSD-Group-Assignment bookings.xsd"> -->
+xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 bookings.xsd">-->
 <bookings>
+    <booking>
+        <bookingID>1</bookingID>
+        <tutorName>Chris Burney</tutorName>
+        <tutorEmail>chrisburney@tutor.com</tutorEmail>
+        <subject>WSD</subject>
+        <studentName>Steven Walker</studentName>
+        <studentEmail>swalker@student.com</studentEmail>
+        <bookingStatus>completed</bookingStatus>
+    </booking>
     <!--Sample bookings in project folder-->
 </bookings>
 

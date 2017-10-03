@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--<xs:schema
- xmlns:xs="http://www.w3.org/2001/XMLSchema"
- targetNamespace="http://localhost/WSD-Group-Assignment"
- xmlns="http://localhost/WSD-Group-Assignment"
- elementFormDefault="qualified">-->
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.uts.edu.au/31284/wsd-assg1"
+    xmlns="http://www.uts.edu.au/31284/wsd-assg1"
+    elementFormDefault="qualified">-->
 <xs:schema
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  elementFormDefault="qualified">
@@ -15,7 +15,8 @@
     
     <xs:simpleType name="email">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[a-zA-Z\._]+[@]([a-z-]+)([\.][a-z-]+)+"/>
+<!--            <xs:pattern value="[a-zA-Z\._]+[@]([a-z-]+)([\.][a-z-]+)+"/>-->
+            <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,4}"/>
         </xs:restriction>
     </xs:simpleType>
     
