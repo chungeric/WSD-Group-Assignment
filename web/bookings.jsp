@@ -29,11 +29,7 @@
                 <a href="main.jsp" id="logo">UTSTutor</a>
             </span>
             <div id="navBar">
-                <% if(student != null) { %>
-                <a href="accountStudent.jsp" class="navLink">My Account</a>
-                <% } else { %>
-                <a href="accountTutor.jsp" class="navLink">My Account</a>
-                <% } %>
+                <a href="account.jsp" class="navLink">My Account</a>
                 <a href="bookings.jsp" class="navLink">My Bookings</a>
             </div>
             <a href="logout.jsp" class="logout"><i class="material-icons">exit_to_app</i></a>

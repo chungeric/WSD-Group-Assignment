@@ -11,7 +11,7 @@ import java.util.*;
 
 
 /**
- *      http://localhost:8080/Group/rest/tutor/alltutors/  to find the stuff
+ *      http://localhost:8080/Group/rest/tutor/status/Available   to search
  */
 
 @Path("/tutor")
@@ -20,7 +20,7 @@ public class TutorService {
  @Context
  private ServletContext application;
  
- private TutorCache getTutors() throws JAXBException, IOException, Exception {
+ private TutorCache getAllTutors() throws JAXBException, IOException, Exception {
     synchronized (application) {
     TutorCache tutors = (TutorCache)application.getAttribute("tutors");
     if (tutors == null) {
@@ -36,21 +36,21 @@ public class TutorService {
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Tutors getUsers() throws IOException, Exception {
-       return getTutors().getTutors();
+       return getAllTutors().getTutors();
     }
  
-    @Path("tutorStatus/{status}")
+    @Path("status/{status}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public ArrayList<Tutor> getTutorStatus(@PathParam("status") String status) throws Exception{
-        return getTutors().getTutors().getTutorStatus(status);
+        return getAllTutors().getTutors().getTutorsByStatus(status);
     }
     
-    @Path("tutorEmail/{email}")
+    @Path("email/{email}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Tutor getTutorEmail(@PathParam("email") String email) throws Exception{
-        return getTutors().getTutors().getTutorEmail(email);
+        return getAllTutors().getTutors().getTutorByEmail(email);
     }
     
     

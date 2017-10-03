@@ -48,7 +48,7 @@
             
             // gets the tutor associated with this booking we are trying to complete
             
-            Tutor tutor = tutors.getTutorEmail(booking.getTutorEmail());
+            Tutor tutor = tutors.getTutorByEmail(booking.getTutorEmail());
             
             // Change bookingStatus from active to completed and update bookings.xml
             

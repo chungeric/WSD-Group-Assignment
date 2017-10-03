@@ -53,7 +53,7 @@
         <%
             Bookings bookings = bookingCache.getBookings();
             Tutors tutors = tutorCache.getTutors();
-            Tutor tutor = tutors.getTutorEmail(tutorEmail);
+            Tutor tutor = tutors.getTutorByEmail(tutorEmail);
             
             // The tutor exists and is available, we can create a booking with them
             if (tutor != null && tutor.getStatus().equals("Available")) {

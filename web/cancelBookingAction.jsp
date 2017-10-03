@@ -46,7 +46,7 @@
             
             // gets the tutor associated with this booking we are trying to cancel
             
-            Tutor tutor = tutors.getTutorEmail(booking.getTutorEmail());
+            Tutor tutor = tutors.getTutorByEmail(booking.getTutorEmail());
             
             // Change bookingStatus from active to cancelled and update bookings.xml
             

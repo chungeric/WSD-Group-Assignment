@@ -36,15 +36,32 @@ public class Bookings implements Serializable {
         return null;
     }
     
-    public ArrayList<Booking> getUserWithEmail(String email) {
+    public ArrayList<Booking> getStudentWithEmail(String email) {
         ArrayList<Booking> userWithEmail = new ArrayList<>();
         for (Booking booking : list) {
             if (booking.getStudentEmail().equals(email)) {
                userWithEmail.add(booking);
             }
         }
+        if (userWithEmail.isEmpty()){
+            return null;
+        }
         return userWithEmail;
     }
+    
+    public ArrayList<Booking> getTutorWithEmail(String email) {
+        ArrayList<Booking> userWithEmail = new ArrayList<>();
+        for (Booking booking : list) {
+            if (booking.getTutorEmail().equals(email)) {
+               userWithEmail.add(booking);
+            }
+        }
+        if (userWithEmail.isEmpty()){
+            return null;
+        }
+        return userWithEmail;
+    }
+    
     
     public ArrayList<Booking> getSubject(String subject) {
         ArrayList<Booking> subjectList = new ArrayList<>();
@@ -52,6 +69,9 @@ public class Bookings implements Serializable {
             if (booking.getSubject().equals(subject)) {
                subjectList.add(booking);
             }
+        }
+        if (subjectList.isEmpty()){
+            return null;
         }
         return subjectList;
     }
@@ -63,6 +83,9 @@ public class Bookings implements Serializable {
                statusList.add(booking);
             }
         }
+        if (statusList.isEmpty()){
+            return null;
+        }
         return statusList;
     }
     
@@ -71,6 +94,5 @@ public class Bookings implements Serializable {
         Booking booking = new Booking(bookingID, tutorName, tutorEmail, subject, studentName, studentEmail, bookingStatus);
         return booking;
     }
-    
-    
+      
 }

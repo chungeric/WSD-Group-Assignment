@@ -30,6 +30,7 @@ public class Tutors implements Serializable {
         list.remove(tutor);
     }
     
+    
     public Tutor checkForDuplicate(String email) {
         // For each tutor in the list...
         for (Tutor tutor : list) {
@@ -49,18 +50,8 @@ public class Tutors implements Serializable {
         }
         return null; // Login incorrect. Return null.
     }
-    
-    public ArrayList<Tutor> getTutorStatus(String status) {
-        ArrayList<Tutor> tutorStatusList = new ArrayList<>();
-        for (Tutor tutor: list) {
-            if (tutor.getStatus().equals(status)) {
-               tutorStatusList.add(tutor);
-            }
-        }
-        return tutorStatusList;
-    }
-    
-    public Tutor getTutorEmail(String email) {
+
+    public Tutor getTutorByEmail(String email) {
         for (Tutor tutor: list) {
             if (tutor.getEmail().equals(email)) {
                 return tutor;

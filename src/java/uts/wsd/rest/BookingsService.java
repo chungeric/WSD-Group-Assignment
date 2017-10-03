@@ -11,7 +11,7 @@ import java.util.*;
 
 
 /**
- *      http://localhost:8080/Group/rest/bookings/booked/swalker@student.com  to find the stuff
+ *      http://localhost:8080/Group/rest/bookings/status/Available example search.
  */
 
 @Path("/bookings")
@@ -20,7 +20,7 @@ public class BookingsService {
  @Context
  private ServletContext application;
  
- private BookingCache getBookings() throws JAXBException, IOException, Exception {
+ private BookingCache getAllBookings() throws JAXBException, IOException, Exception {
     synchronized (application) {
     BookingCache bookings = (BookingCache)application.getAttribute("bookings");
     if (bookings == null) {
@@ -39,40 +39,40 @@ public class BookingsService {
         return "Hello World";
     }
     
-    @Path("allBookings")
+    @Path("allbookings")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Bookings getUsers() throws IOException, Exception {
-       return getBookings().getBookings();
+       return getAllBookings().getBookings();
     }
     
        
-    @Path("bookByID/{bookingID}")
+    @Path("id/{bookingID}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Booking getBookingID(@PathParam("bookingID") int bookingID) throws Exception{
-        return getBookings().getBookings().getBookingID(bookingID);
+        return getAllBookings().getBookings().getBookingID(bookingID);
     }
     
-    @Path("bookByEmail/{studentEmail}")
+    @Path("email/{studentEmail}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public ArrayList<Booking> getUser(@PathParam("studentEmail") String studentEmail) throws Exception{
-        return getBookings().getBookings().getUserWithEmail(studentEmail);
+        return getAllBookings().getBookings().getStudentWithEmail(studentEmail);
     }
       
-    @Path("bookBySubject/{subject}")
+    @Path("subject/{subject}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public ArrayList<Booking> getSubject(@PathParam("subject") String subject) throws Exception{
-        return getBookings().getBookings().getSubject(subject);
+        return getAllBookings().getBookings().getSubject(subject);
     }
     
-    @Path("bookByStatus/{bookingStatus}")
+    @Path("status/{bookingStatus}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public ArrayList<Booking> getBookingStatus(@PathParam("bookingStatus") String bookingStatus) throws Exception{
-        return getBookings().getBookings().getBookingStatus(bookingStatus);
+        return getAllBookings().getBookings().getBookingStatus(bookingStatus);
     }
     
     
