@@ -9,7 +9,7 @@ public class DataValidator {
     // Just grabbed regular expressions from the xml schemas
     private String nameRegex = "([A-Z][a-z]+\\s)+([A-Z][a-z]+)";
     //private String emailRegex = "[a-zA-Z\\._]+[@]([a-z-]+)([\\.][a-z-]+)+";
-    private String emailRegex = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-z]{2,4}"; //This is from tutor video
+    private String emailRegex = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-z]{2,4}"; //This is from tutor video
     private String passwordRegex = ".{6,}";
     private String dobRegex = "\\d{1,4}-\\d{1,2}-\\d{1,2}";
     //private String subjectRegex = "[A-Z][a-z]+[A-Z][a-z]";

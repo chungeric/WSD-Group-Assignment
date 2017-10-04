@@ -12,6 +12,10 @@
         <title>Successfully Deleted!</title>
     </head>
     <body>
+        <%  
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+        %>
         
         <!--regardless of session, reset beans to null-->
         <% session.setAttribute("student", null);%>  
@@ -19,5 +23,13 @@
         <h1>Your account has been deleted 
             <a href="login.jsp">return</a>
         </h1>
+        
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

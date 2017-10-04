@@ -32,7 +32,7 @@ public class TutorService {
     }
  }
  
-    @Path("allTutors")
+    @Path("alltutors")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Tutors getUsers() throws IOException, Exception {

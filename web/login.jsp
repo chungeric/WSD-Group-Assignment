@@ -35,6 +35,7 @@
             <center>
                 <span class="errorText"><%=existErrorMsg%></span><br>
             <form method="POST" action="loginAction.jsp">
+                <input type="hidden" name="formCheck" value="check">
                 <label>Email Address:</label> <input type="text" name="email" placeholder="e.g. johnsmith@email.com"> <span class="errorText"><%=emailErrorMsg%></span><br>
                 <label>Password:</label> <input type="password" name="password"> <span class="errorText"><%=passwordErrorMsg%></span> <br>            
                 Don't have an account yet? Click <a href="register.jsp">here</a> to register.<br>

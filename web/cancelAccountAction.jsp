@@ -13,7 +13,12 @@ import java.util.*;-->
         <title>cancelAccount action page</title>
     </head>
     <body>
-        
+        <%  
+            // ROUTE PROTECTION
+            // checks that a student / tutor is logged on
+            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+                
+        %>
         
         <%
             String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");
@@ -78,5 +83,14 @@ import java.util.*;-->
                 response.sendRedirect("accountDeleted.jsp");  
             }
         %>    
+        
+        
+        <%  
+            // ROUTE PROTECTION
+            } else {
+                // user not logged in
+                response.sendRedirect("index.jsp");
+            }
+        %>
     </body>
 </html>

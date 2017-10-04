@@ -15,7 +15,12 @@
     </head>
     <body>
         
-        
+        <%
+            // ROUTE PROTECTION
+            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+                
+                if (request.getParameter("formCheck")!=null) {
+        %>
         
         <%
             // ---- Get the xml files containing the students and the tutors ---- /
@@ -91,6 +96,16 @@
             }
         %>        
         
-        
+        <%  
+            // ROUTE PROTECTION
+            
+                } else {
+                    response.sendRedirect("index.jsp");
+                }
+
+            } else {
+                response.sendRedirect("main.jsp");
+            }
+        %>
     </body>
 </html>
