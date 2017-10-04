@@ -42,6 +42,15 @@ public class TutorCache {
         fout.close();
     }
     
+    public void saveTutors() throws JAXBException, IOException {
+        JAXBContext jc = JAXBContext.newInstance(Tutors.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        FileOutputStream fout = new FileOutputStream(filePath);
+        m.marshal(tutors, fout);
+        fout.close();
+    }
+    
     public Tutors getTutors() {
         return tutors;
     }

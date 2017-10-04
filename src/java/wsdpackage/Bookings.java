@@ -89,10 +89,9 @@ public class Bookings implements Serializable {
         return statusList;
     }
     
-    // lol i feel like i'm doing this wrong, maybe this should add the booking to XML as well somehow
-    public Booking createBooking(int bookingID, String tutorName, String tutorEmail, String subject, String studentName, String studentEmail, String bookingStatus) {
-        Booking booking = new Booking(bookingID, tutorName, tutorEmail, subject, studentName, studentEmail, bookingStatus);
-        return booking;
+    public void cancelBooking(int bookingId) {
+        Booking booking = getBookingID(bookingId);
+        booking.setBookingStatus("cancelled");
     }
-      
+    
 }
