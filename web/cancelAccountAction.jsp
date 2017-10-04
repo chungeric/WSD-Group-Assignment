@@ -3,9 +3,9 @@
 <%@page import="wsdpackage.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-import uts.wsd.*;
+<!--import uts.wsd.*;
 import wsdpackage;
-import java.util.*;
+import java.util.*;-->
 <!DOCTYPE html>
 <html>
     <head>

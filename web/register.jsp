@@ -32,19 +32,9 @@
         <div id="content">
             <h1>Register</h1>
             
-                <%
-                    String specialtyErr = (String) session.getAttribute("specialtyErr");
-                    if(specialtyErr != null) {
-                %>
-                <span class="warning">
-                    <%=specialtyErr%>
-                </span>
-                <% } %>
-            
             <form method="POST" action="registerAction.jsp">
                 <table>
                     <tr>
-                        <td>Full Name:</td>
                         <td><input type="hidden" name="formCheck" value="check"><span class="errorText"></span></td>
                     </tr>
                     <tr>

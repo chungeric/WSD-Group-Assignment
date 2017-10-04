@@ -53,12 +53,13 @@
             // Change bookingStatus from active to completed and update bookings.xml
             
             booking.setBookingStatus("completed");
-            bookingCache.updateXML(bookings, bookingsFilePath);
+            
             
             // Change tutorStatus from Unavailable to Available and update tutors.xml
             
             tutor.setStatus("Available");
             tutorCache.updateXML(tutors, tutorFilePath);
+            bookingCache.updateXML(bookings, bookingsFilePath);
             
             response.sendRedirect("bookings.jsp");
 

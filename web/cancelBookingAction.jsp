@@ -51,13 +51,13 @@
             // Change bookingStatus from active to cancelled and update bookings.xml
             
             booking.setBookingStatus("cancelled");
-            bookingCache.updateXML(bookings, bookingsFilePath);
+            
             
             // Change tutorStatus from Unavailable to Available and update tutors.xml
             
             tutor.setStatus("Available");
             tutorCache.updateXML(tutors, tutorFilePath);
-            
+            bookingCache.updateXML(bookings, bookingsFilePath);
             
             // XML is updating too slowly, on redirect the change doesn't appear
             // straight away. Maybe find a way to do this line only once the XML updates have been made?
