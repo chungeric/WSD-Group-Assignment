@@ -31,7 +31,7 @@
         </div>
         <div id="content">
             <h1>Register</h1>
-            
+            <span class="errorText"><%=subjectErrorMsg%></span><br>
             <form method="POST" action="registerAction.jsp">
                 <table>
                     <tr>
@@ -78,7 +78,6 @@
                                 <option>MobileApp</option>
                             </select>
                         </td>
-                        <td><span class="errorText"><%=subjectErrorMsg%></span></td>
                     </tr>
                     <tr>
                         <td><input type="Submit" value="Submit" class="button"></td>
