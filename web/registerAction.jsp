@@ -40,6 +40,7 @@
             session.setAttribute("passwordErrorMsg", "");
             session.setAttribute("dobErrorMsg", "");
             session.setAttribute("subjectErrorMsg", "");
+            session.setAttribute("existRegisterErrorMsg", "");
 
             String name = request.getParameter("name");
             String email = request.getParameter("email"); 
@@ -57,12 +58,13 @@
             
             // If there is student or tutor with the same email stored in the XML file, then we'll go back to the register page
             if ((potentialStudent != null) || (potentialTutor != null)) {
+                session.setAttribute("existRegisterErrorMsg", "User already exists");
                 response.sendRedirect("register.jsp");            
             }
             
             else if (!validator.validateName(name) || !validator.validateEmail(email) || !validator.validatePassword(password) || !validator.validateDob(dob)) {
                     if (!validator.validateName(name)) {
-                        session.setAttribute("nameErrorMsg", "Please begin each name with a capital letter and only use letters.");
+                        session.setAttribute("nameErrorMsg", "Please begin each name with a capital letter and only use letters");
                     }  
                     if (!validator.validateEmail(email)) {
                     session.setAttribute("emailErrorMsg", "Invalid email address");         
@@ -76,11 +78,6 @@
  
                 response.sendRedirect("register.jsp");  
             }
-            
-            /*else if (!validator.validateEmail(email)) {
-                session.setAttribute("emailErrorMsg", "Incorrect email format");         
-                response.sendRedirect("register.jsp");  
-            }*/
             
             // If the user's email doesn't match anyone in the XML files, and if they selected "Student" as their user type, let's register them.
             else if (userType.equals("Student")) {
@@ -100,10 +97,7 @@
                     session.setAttribute("subjectErrorMsg", "Please choose a subject");
                     response.sendRedirect("register.jsp");
                 }
-                /*if (subject.equals("")) {
-                    session.setAttribute("specialtyErr", "Select your subject of specialty");
-                    response.sendRedirect("register.jsp");  
-                }*/
+
                 else {
                     Tutor tutor = new Tutor(name, email, password, dob, userType, subject, status);
                     session.setAttribute("tutor", tutor);

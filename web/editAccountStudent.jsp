@@ -1,3 +1,4 @@
+<%@page import="wsdpackage.DataValidator"%>
 <%@page import="wsdpackage.Students"%>
 <%@ page import="wsdpackage.Student"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,12 +29,36 @@
             // Grab the list of students from the Students XML
             Students students = studentCache.getStudents();
             
+            session.setAttribute("nameErrorMsg", "");
+            session.setAttribute("passwordErrorMsg", "");
+            session.setAttribute("dobErrorMsg", "");
+            session.setAttribute("detailsErrorMsg", "");
+            
             // Get the student's data from the current bean
             Student student = (Student) session.getAttribute("student");
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
+            DataValidator validator = new DataValidator();
             
+            if (!validator.validateName(name)  || !validator.validatePassword(password) || !validator.validateDob(dob)) {
+                    if (!validator.validateName(name)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("nameErrorMsg", "Please begin each name with a capital letter and only use letters");
+                    }  
+                    if (!validator.validatePassword(password)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("passwordErrorMsg", "Invalid password format");         
+                    }  
+                    if (!validator.validateDob(dob)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("dobErrorMsg", "Invalid date of birth format");         
+                    }  
+ 
+                response.sendRedirect("account.jsp");  
+            }
+            
+            else {
             // After grabbing the edited details, let's set them.
             student.setName(name);
             student.setPassword(password);
@@ -44,6 +69,7 @@
             
             //Update and go back to the student's account page
             response.sendRedirect("account.jsp");
+            }
         %>
         
         

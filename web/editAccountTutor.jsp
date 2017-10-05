@@ -1,3 +1,4 @@
+<%@page import="wsdpackage.DataValidator"%>
 <%@page import="wsdpackage.Tutors"%>
 <%@ page import="wsdpackage.Tutor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,11 +30,35 @@
             // Grab the list of tutors from the tutor XML
             Tutors tutors = tutorCache.getTutors();
             
+            session.setAttribute("nameErrorMsg", "");
+            session.setAttribute("passwordErrorMsg", "");
+            session.setAttribute("dobErrorMsg", "");
+            session.setAttribute("detailsErrorMsg", "");
+            
             // Get the tutors's data from the current bean
             Tutor tutor = (Tutor) session.getAttribute("tutor");
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
+            DataValidator validator = new DataValidator();
+            
+            if (!validator.validateName(name)  || !validator.validatePassword(password) || !validator.validateDob(dob)) {
+                    if (!validator.validateName(name)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("nameErrorMsg", "Please begin each name with a capital letter and only use letters");
+                    }  
+                    if (!validator.validatePassword(password)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("passwordErrorMsg", "Invalid password format");         
+                    }  
+                    if (!validator.validateDob(dob)) {
+                        session.setAttribute("detailsErrorMsg", "Your details could not be updated. Errors with input."); 
+                        session.setAttribute("dobErrorMsg", "Invalid date of birth format");         
+                    }  
+ 
+                response.sendRedirect("account.jsp");  
+            }
+            else {            
             
             // After grabbing the edited details, let's set them.
             tutor.setName(name);
@@ -45,6 +70,7 @@
                 
             //Update and go back to the tutor's account page
             response.sendRedirect("account.jsp");
+            }
         %>
         
         

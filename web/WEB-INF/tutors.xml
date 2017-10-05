@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
             <name>Chris Burney</name>
             <email>chrisburney@tutor.com</email>
             <password>password</password>
-            <dob>02/11/1968</dob>
+            <dob>1968-11-02</dob>
             <userType>Tutor</userType>
             <subject>WSD</subject>
             <status>Available</status>
@@ -18,7 +18,7 @@ xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
             <name>Selina Madrid</name>
             <email>smadrid@tutor.com</email>
             <password>password123</password>
-            <dob>29/04/1986</dob>
+            <dob>1986-04-29</dob>
             <userType>Tutor</userType>
             <subject>USP</subject>
             <status>Available</status>
@@ -28,7 +28,7 @@ xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
             <name>Maxwell Parra</name>
             <email>maxparra@tutor.com</email>
             <password>password123</password>
-            <dob>12/08/70</dob>
+            <dob>1970-08-12</dob>
             <userType>Tutor</userType>
             <subject>SEP</subject>
             <status>Available</status>
@@ -38,7 +38,7 @@ xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
             <name>Jonah Stockton</name>
             <email>jstockton@tutor.com</email>
             <password>password123</password>
-            <dob>09/09/1979</dob>
+            <dob>1979-09-09</dob>
             <userType>Tutor</userType>
             <subject>AppProg</subject>
             <status>Available</status>
@@ -48,7 +48,7 @@ xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
             <name>Martin Silver</name>
             <email>martinsilver@tutor.com</email>
             <password>password123</password>
-            <dob>22/10/1985</dob>
+            <dob>1985-10-22</dob>
             <userType>Tutor</userType>
             <subject>MobileApp</subject>
             <status>Available</status>
