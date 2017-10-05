@@ -146,3 +146,9 @@ a.logout:link, a.logout:active, a.logout:visited {
 .selected {
     background-color: #ECECEC;
 }
+
+.errorText {
+    font-size: 8pt;
+    font-style: italic;
+    color: #FF0000;
+}
