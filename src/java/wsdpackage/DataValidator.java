@@ -34,7 +34,7 @@ public class DataValidator {
     }
     
     public boolean validateDob(String dob) {
-        
+        if (dob.equals("")) return false;
         // Get today's date, and subtract 16 years from the current year
         Calendar currentDate = Calendar.getInstance();
         currentDate.add(Calendar.YEAR,-16);
