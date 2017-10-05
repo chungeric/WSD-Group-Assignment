@@ -19,6 +19,19 @@
             // Grab the student data stored in the java bean
             Student student = (Student) session.getAttribute("student");
             Tutor tutor = (Tutor) session.getAttribute("tutor");
+            
+            String nameErrorMsg = (String) session.getAttribute("nameErrorMsg");
+            String passwordErrorMsg = (String) session.getAttribute("passwordErrorMsg");
+            String dobErrorMsg = (String) session.getAttribute("dobErrorMsg");
+            String detailsErrorMsg = (String) session.getAttribute("detailsErrorMsg");
+
+            
+            if (nameErrorMsg == null || passwordErrorMsg == null || dobErrorMsg == null || detailsErrorMsg == null) {
+                nameErrorMsg = "";
+                passwordErrorMsg = "";
+                dobErrorMsg = "";
+                detailsErrorMsg = "";
+            }
         %>
         
             
@@ -29,17 +42,17 @@
             <h2>Edit your details:</h2>
             <% if (student!= null) {%>
                     <form method="POST" action="editAccountStudent.jsp">
-                            <label>Name:</label> <input type="text" name="name" value="<%=student.getName()%>"><br>
-                            <label>Password:</label> <input type="password" name="password" value="<%=student.getPassword()%>"><br>
-                            <label>Date of Birth:</label> <input type="text" name="dob" value="<%=student.getDob()%>"><br>
+                            <label>Name:</label> <input type="text" name="name" value="<%=student.getName()%>"> <span class="errorText"><%=nameErrorMsg%></span><br>
+                            <label>Password:</label> <input type="password" name="password" value="<%=student.getPassword()%>"> <span class="errorText"><%=passwordErrorMsg%></span><br>
+                            <label>Date of Birth:</label> <input type="text" name="dob" value="<%=student.getDob()%>"> <span class="errorText"><%=dobErrorMsg%></span><br>
                             <input type="Submit" value="Submit" class="button">
                     </form>
             </div>
             <% } else { %> 
                         <form method="POST" action="editAccountTutor.jsp">
-                            <label>Name:</label> <input type="text" name="name" value="<%=tutor.getName()%>"><br>
-                            <label>Password:</label> <input type="password" name="password" value="<%=tutor.getPassword()%>"><br>
-                            <label>Date of Birth:</label> <input type="text" name="dob" value="<%=tutor.getDob()%>"><br>
+                            <label>Name:</label> <input type="text" name="name" value="<%=tutor.getName()%>">  <span class="errorText"><%=nameErrorMsg%></span><br>
+                            <label>Password:</label> <input type="password" name="password" value="<%=tutor.getPassword()%>"> <span class="errorText"><%=passwordErrorMsg%></span><br>
+                            <label>Date of Birth:</label> <input type="text" name="dob" value="<%=tutor.getDob()%>"> <span class="errorText"><%=dobErrorMsg%></span><br>
                             <input type="Submit" value="Submit" class="button">
                         </form>
                 </div> 
@@ -63,6 +76,7 @@
             %>
             <h1>Welcome <%=student.getName()%>!</h1>
             <h2>Here are your details:</h2>
+            <span class="errorText"><%=detailsErrorMsg%></span><br>
             <span id="editMode" onClick="editMode()">Edit details <i class="material-icons">mode_edit</i></span><br>
             <form method="POST" action="cancelAccountAction.jsp">
                 <table>
@@ -80,7 +94,7 @@
                     </tr>
                     <tr>
                         <td><b>User Type:</b></td>
-                        <td><%=student.getUserType()%><br></tr>
+                        <td><%=student.getUserType()%><br></td>
                     </tr>
                     <tr>
                         <td><input type="Submit" value="Cancel Account" class="button"</td>
@@ -95,6 +109,7 @@
              %>
                     <h1>Welcome <%=tutor.getName()%>!</h1>
                     <h2>Here are your details:</h2>
+                    <span class="errorText"><%=detailsErrorMsg%></span><br>
                     <span id="editMode" onClick="editMode()">Edit details <i class="material-icons">mode_edit</i></span><br>
                     <form method="POST" action="cancelAccountAction.jsp">
                         <table>
@@ -119,7 +134,7 @@
                                 <td><%=tutor.getSubject()%><br></td>
                             <tr>    
                                 <td><b>Status:</b></td>
-                                <td><%=tutor.getStatus()%><br><br></tr>
+                                <td><%=tutor.getStatus()%><br></td>
                             </tr>
                             <tr>
                                 <td><input type="Submit" value="Cancel Account" class="button"</td>

@@ -174,3 +174,9 @@ a.logout:link, a.logout:active, a.logout:visited {
     border: 3px solid #366B73;
     cursor: pointer;
 }
+
+.errorText {
+    font-size: 8pt;
+    font-style: italic;
+    color: #FF0000;
+}

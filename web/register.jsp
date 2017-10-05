@@ -13,13 +13,15 @@
             String passwordErrorMsg = (String) session.getAttribute("passwordErrorMsg");
             String dobErrorMsg = (String) session.getAttribute("dobErrorMsg");
             String subjectErrorMsg = (String) session.getAttribute("subjectErrorMsg");
+            String existRegisterErrorMsg = (String) session.getAttribute("existRegisterErrorMsg");
             
-            if (nameErrorMsg == null || emailErrorMsg == null || passwordErrorMsg == null || dobErrorMsg == null || subjectErrorMsg == null) {
+            if (nameErrorMsg == null || emailErrorMsg == null || passwordErrorMsg == null || dobErrorMsg == null || subjectErrorMsg == null || existRegisterErrorMsg == null) {
                 nameErrorMsg = "";
                 emailErrorMsg = "";
                 passwordErrorMsg = "";
                 dobErrorMsg = "";
                 subjectErrorMsg = "";
+                existRegisterErrorMsg = "";
             }
             if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
         %>
@@ -31,7 +33,7 @@
         </div>
         <div id="content">
             <h1>Register</h1>
-            <span class="errorText"><%=subjectErrorMsg%></span><br>
+            <span class="errorText"><%=existRegisterErrorMsg%></span><span class="errorText"><%=subjectErrorMsg%></span><br>
             <form method="POST" action="registerAction.jsp">
                 <table>
                     <tr>

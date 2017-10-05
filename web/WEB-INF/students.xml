@@ -8,7 +8,7 @@
         <name>Steven Walker</name>
         <email>swalker@student.com</email>
         <password>password</password>
-        <dob>03/04/1993</dob>
+        <dob>1993-04-03</dob>
         <userType>Student</userType>
     </student>
     
@@ -16,7 +16,7 @@
         <name>Lillian Adams</name>
         <email>ladams2@student.com</email>
         <password>password123</password>
-        <dob>12/08/1996</dob>
+        <dob>1996-08-12</dob>
         <userType>Student</userType>
     </student>
     
@@ -24,7 +24,7 @@
         <name>Todd Morris</name>
         <email>tmorris10@student.com</email>
         <password>pw12345</password>
-        <dob>26/12/1997</dob>
+        <dob>1997-12-26</dob>
         <userType>Student</userType>
     </student>
     
@@ -32,7 +32,7 @@
         <name>Fred Nelson</name>
         <email>fred_nelson@email.com</email>
         <password>pW*1234</password>
-        <dob>04/02/1997</dob>
+        <dob>1997-02-04</dob>
         <userType>Student</userType>
     </student>
     
@@ -40,7 +40,7 @@
         <name>Wendy Clark</name>
         <email>wendy-clark@student.com</email>
         <password>!@#pw123</password>
-        <dob>27/11/96</dob>
+        <dob>1996-11-27</dob>
         <userType>Student</userType>
     </student>
     

@@ -1,5 +1,6 @@
 package wsdpackage;
 import java.util.*;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,11 +9,9 @@ public class DataValidator {
   
     // Just grabbed regular expressions from the xml schemas
     private String nameRegex = "([A-Z][a-z]+\\s)+([A-Z][a-z]+)";
-    //private String emailRegex = "[a-zA-Z\\._]+[@]([a-z-]+)([\\.][a-z-]+)+";
     private String emailRegex = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-z]{2,4}"; //This is from tutor video
     private String passwordRegex = ".{6,}";
-    private String dobRegex = "\\d{1,4}-\\d{1,2}-\\d{1,2}";
-    //private String subjectRegex = "[A-Z][a-z]+[A-Z][a-z]";
+    private String dobRegex = "\\d{4}-\\d{2}-\\d{2}";
  
     public DataValidator() {}
     
@@ -35,17 +34,27 @@ public class DataValidator {
     }
     
     public boolean validateDob(String dob) {
-        return validate(dobRegex, dob);
+        
+        // Get today's date, and subtract 16 years from the current year
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.add(Calendar.YEAR,-16);
+        
+        int sixteenYearsAgo = currentDate.get(Calendar.YEAR);
+        String userYear = dob.substring(0,4);
+        
+        // If the year the user inputted is greater or equal to the year sixteen years ago...
+        // ... They are too young to be a typical uni student/tutor
+        
+        if (Integer.parseInt(userYear) >= sixteenYearsAgo) {
+            return false;
+        }
+        else {
+            return validate(dobRegex, dob);
+        }
     }
     
     public boolean validateSubject(String subject) {
         return subject.equals("WSD") || subject.equals("USP") || subject.equals("SEP") || subject.equals("AppProg") || subject.equals("MobileApp");
     }
-    
-    /*public boolean isEmpty(String name, String email, String password, String dob) {
-        if (name == "" || email == "" || password == "" || dob == "") {
-            return true;
-        }
-        return false;
-    }*/
+
 }
