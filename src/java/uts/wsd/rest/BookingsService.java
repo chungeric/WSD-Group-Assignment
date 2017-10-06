@@ -11,7 +11,7 @@ import java.util.*;
 
 
 /**
- *      http://localhost:8080/Group/rest/bookings/status/Available example search.
+ *      http://localhost:8080/WSD-Group-Assignment/rest/bookings/status/Available example search.
  */
 
 @Path("/bookings")

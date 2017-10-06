@@ -6,9 +6,9 @@
         <title>WSD - Assignment 1: Logout</title>
     </head>
     <body>
-        <% 
+        <%
             // end the current session and go back to the index page.
-            session.invalidate(); 
+            session.invalidate();
             response.sendRedirect("index.jsp");
         %>
     </body>

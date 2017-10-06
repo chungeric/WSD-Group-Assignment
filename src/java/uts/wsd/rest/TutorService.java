@@ -11,7 +11,7 @@ import java.util.*;
 
 
 /**
- *      http://localhost:8080/Group/rest/tutor/status/Available   to search
+ *      http://localhost:8080/WSD-Group-Assignment/rest/tutor/status/Available   to search
  */
 
 @Path("/tutor")

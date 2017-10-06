@@ -7,11 +7,11 @@
         <title>Successfully Deleted!</title>
     </head>
     <body>
-        <%  
+        <%
             // ROUTE PROTECTION
-            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+            if (session.getAttribute("student") != null || session.getAttribute("tutor") != null) {
         %>
-        
+
         <div id="content">
             <!--regardless of session, reset beans to null-->
             <% session.setAttribute("student", null);%>  
@@ -21,9 +21,9 @@
                 Click <a href="index.jsp">here</a> to return to the index page. 
             </center>
         </div>
-        
-        <%  
-            // ROUTE PROTECTION
+
+        <%
+                // ROUTE PROTECTION
             } else {
                 // user not logged in
                 response.sendRedirect("index.jsp");

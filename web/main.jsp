@@ -12,27 +12,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/mainStyle.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <title>WSD - Assignment 1: Main Page for Students</title>
+        <title>WSD - Assignment 1: Main Page</title>
     </head>
     <body>
-        <%  
+        <%
             // ROUTE PROTECTION
-            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+            if (session.getAttribute("student") != null || session.getAttribute("tutor") != null) {
         %>
-        
-        
-        <%   String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml"); %>
+
+
+        <%   String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");%>
         <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
-        <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
+            <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>
-        
+
         <%
             Student student = (Student) session.getAttribute("student");
             Tutor tutor = (Tutor) session.getAttribute("tutor");
-            
+
             String filter = request.getParameter("filter");
             String search = request.getParameter("search");
-            
+
             ArrayList<Tutor> tutorList = null;
             if (filter != null) {
                 if (filter.equals("subject")) {
@@ -44,7 +44,7 @@
                 }
             }
         %>
-        
+
         <div id="topBar">
             <span>
                 <a href="main.jsp" id="logo">UTSTutor</a>
@@ -55,12 +55,12 @@
             </div>
             <a href="logout.jsp" class="logout"><i class="material-icons">exit_to_app</i></a>
         </div>
-            
-            
+
+
         <div id="content">
             <%
                 // user is a student, display this
-                if(student != null) {
+                if (student != null) {
             %>
             <h1>Welcome <%=student.getName()%>!</h1>
             This is the main page for students.
@@ -84,30 +84,30 @@
                     </table>
                 </form>
 
-                <%  if (tutorList != null) {  %>
-                    <c:import url="WEB-INF/tutors.xml" var="inputDoc" />
-                    <c:import url="WEB-INF/tutors.xsl" var="stylesheet" />
-                    <x:transform xml = "${inputDoc}" xslt = "${stylesheet}">
-                        <x:param name="<%=filter%>" value="<%=search%>" />
-                    </x:transform>
+                <%  if (tutorList != null) {%>
+                <c:import url="WEB-INF/tutors.xml" var="inputDoc" />
+                <c:import url="WEB-INF/tutors.xsl" var="stylesheet" />
+                <x:transform xml = "${inputDoc}" xslt = "${stylesheet}">
+                    <x:param name="<%=filter%>" value="<%=search%>" />
+                </x:transform>
                 <%  }  %>
             </div>
             <%
                 // user is a tutor, display this instead
-                } else {
+            } else {
             %>
             <h1>Welcome <%=tutor.getName()%>!</h1>
             <h2>Your subject of specialty is <%=tutor.getSubject()%></h2>
-                This is the main page for tutors.
+            This is the main page for tutors.
             <%
                 }
             %>
         </div>
-    
-        
-        
-        <%  
-            // ROUTE PROTECTION
+
+
+
+        <%
+                // ROUTE PROTECTION
             } else {
                 response.sendRedirect("index.jsp");
             }

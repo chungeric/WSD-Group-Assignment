@@ -3,9 +3,6 @@
 <%@page import="wsdpackage.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!--import uts.wsd.*;
-import wsdpackage;
-import java.util.*;-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,80 +10,82 @@ import java.util.*;-->
         <title>cancelAccount action page</title>
     </head>
     <body>
-        <%  
+        <%
             // ROUTE PROTECTION
             // checks that a student / tutor is logged on
-            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
-                
+            if (session.getAttribute("student") != null || session.getAttribute("tutor") != null) {
+
         %>
-        
-        <%
-            String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");
+
+        <%            String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");
             String studentFilePath = application.getRealPath("WEB-INF/students.xml");
             String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
-            
-            Student student = (Student)session.getAttribute("student");
-            Tutor tutor = (Tutor)session.getAttribute("tutor");
 
-            
+            Student student = (Student) session.getAttribute("student");
+            Tutor tutor = (Tutor) session.getAttribute("tutor");
+
+
         %>
-        
+
         <jsp:useBean id="bookingCache" class="wsdpackage.BookingCache" scope="application">
-        <jsp:setProperty name="bookingCache" property="filePath" value="<%=bookingsFilePath%>"/>
+            <jsp:setProperty name="bookingCache" property="filePath" value="<%=bookingsFilePath%>"/>
         </jsp:useBean>
-        
+
         <jsp:useBean id="studentCache" class="wsdpackage.StudentCache" scope="application">
-        <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
+            <jsp:setProperty name="studentCache" property="filePath" value="<%=studentFilePath%>"/>
         </jsp:useBean>
-        
+
         <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
-        <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
+            <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>
-        
+
         <%
             Bookings bookings = bookingCache.getBookings();
             Students students = studentCache.getStudents();
             Tutors tutors = tutorCache.getTutors();
 
-            
             if (student != null) {
                 // gets student unique email so that we can also modify in bookings.xml and tutors.xml
                 // to see if student matches any bookings and tutors, than update statuses
                 String email = student.getEmail();
                 ArrayList<Booking> cancelled = bookings.getStudentWithEmail(email);
                 if (cancelled != null) {
-                    for (Booking booking : cancelled){
-                        booking.setBookingStatus("cancelled");
-                        bookingCache.updateXML(bookings, bookingsFilePath);
-                        Tutor tutorUpdate = tutors.getTutorByEmail(booking.getTutorEmail());  
-                        tutorUpdate.setStatus("Available");
-                        tutorCache.updateXML(tutors, tutorFilePath); 
+                    for (Booking booking : cancelled) {
+                        if (booking.getBookingStatus().equals("active")) {
+                            booking.setBookingStatus("cancelled");
+                            bookingCache.updateXML(bookings, bookingsFilePath);
+                            Tutor tutorUpdate = tutors.getTutorByEmail(booking.getTutorEmail());
+                            tutorUpdate.setStatus("Available");
+                            tutorCache.updateXML(tutors, tutorFilePath);
+                        }
                     }
                 }
                 students.removeUser(student);
                 studentCache.updateXML(students, studentFilePath);
                 response.sendRedirect("accountDeleted.jsp");
-                
+
             } else {
 
                 // gets tutor from the bean and their unique email for modification in bookings.xml and tutors.xml
                 String email = tutor.getEmail();
                 ArrayList<Booking> cancelling = bookings.getTutorWithEmail(email);
                 if (cancelling != null) {
-                    for (Booking booking : cancelling){
-                        booking.setBookingStatus("cancelled");
-                        bookingCache.updateXML(bookings, bookingsFilePath);
+                    for (Booking booking : cancelling) {
+                        if (booking.getBookingStatus().equals("active")) {
+                            booking.setBookingStatus("cancelled");
+                            bookingCache.updateXML(bookings, bookingsFilePath);
+                        }
                     }
                 }
                 tutors.removeUser(tutor);
                 tutorCache.updateXML(tutors, tutorFilePath);
-                response.sendRedirect("accountDeleted.jsp");  
+                response.sendRedirect("accountDeleted.jsp");
             }
         %>    
-        
-        
-        <%  
-            // ROUTE PROTECTION
+
+
+        <%
+                // ROUTE PROTECTION
             } else {
                 // user not logged in
                 response.sendRedirect("index.jsp");

@@ -13,17 +13,17 @@
         <title>WSD - Assignment 1: Bookings Page</title>
     </head>
     <body>
-        <%  
+        <%
             // ROUTE PROTECTION
-            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
+            if (session.getAttribute("student") != null || session.getAttribute("tutor") != null) {
         %>
-        
-        
+
+
         <%
             Student student = (Student) session.getAttribute("student");
             Tutor tutor = (Tutor) session.getAttribute("tutor");
         %>
-        
+
         <div id="topBar">
             <span>
                 <a href="main.jsp" id="logo">UTSTutor</a>
@@ -34,17 +34,17 @@
             </div>
             <a href="logout.jsp" class="logout"><i class="material-icons">exit_to_app</i></a>
         </div>
-        
+
         <div id="content">
             <h1>My Bookings</h1>
             <div class="resultContainer">
                 <div class="linkContainer">
-                <%  if (student != null) {  %>
-                
+                    <%  if (student != null) {  %>
+
                     <a href="createBooking.jsp" class="button">Create a New Booking</a>
-                    
-                <%  }   %>
-                
+
+                    <%  }   %>
+
                     <button id="allBookingsBtn" class="button filterbtn selected">All</button>
                     <button id="activeBookingsBtn" class="filterbtn button">Active</button>
                     <button id="cancelledBookingsBtn" class="filterbtn button">Cancelled</button>
@@ -54,7 +54,7 @@
                 <!-- This page should display all of the user's OWN bookings -->
                 <!-- And allow them to toggle between ALL, ACTIVE, CANCELLED and COMPLETED bookings -->
 
-                <%  if (student != null) {  %>
+                <%  if (student != null) {%>
 
                 <c:import url="WEB-INF/bookings.xml" var="inputDoc" />
                 <c:import url="WEB-INF/bookings.xsl" var="stylesheet" />
@@ -63,7 +63,7 @@
                     <x:param name="studentEmail" value="<%=student.getEmail()%>" />
                 </x:transform>
 
-                <%  } else {  %>
+                <%  } else {%>
 
                 <c:import url="WEB-INF/bookings.xml" var="inputDoc" />
                 <c:import url="WEB-INF/bookings.xsl" var="stylesheet" />
@@ -75,14 +75,14 @@
                 <%  }  %>
             </div>
         </div>
-            
-            
-        <%  
-            // ROUTE PROTECTION
+
+
+        <%
+                // ROUTE PROTECTION
             } else {
                 response.sendRedirect("index.jsp");
             }
         %>
-    <script src="JavaScript/bookings.js"></script>
+        <script src="JavaScript/bookings.js"></script>
     </body>
 </html>

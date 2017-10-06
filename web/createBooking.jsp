@@ -9,29 +9,32 @@
         <title>WSD - Assignment 1: Create Booking Page</title>
     </head>
     <body>
-        <%  
-            // ROUTE PROTECTION
-            if (session.getAttribute("student")!=null || session.getAttribute("tutor")!=null) {
-                
-                if (session.getAttribute("student")!=null) {
-        %>
-        
-        
         <%
-            
+            // ROUTE PROTECTION
+            if (session.getAttribute("student") != null || session.getAttribute("tutor") != null) {
+
+                if (session.getAttribute("student") != null) {
+        %>
+
+
+        <%
             String email = request.getParameter("email");
             String name = request.getParameter("name");
             String subject = request.getParameter("subject");
             String status = request.getParameter("status");
-            
+
             String existTutorErrorMsg = (String) session.getAttribute("existTutorErrorMsg");
             String unavailableTutorErrorMsg = (String) session.getAttribute("unavailableTutorErrorMsg");
-            
-            if (existTutorErrorMsg == null) existTutorErrorMsg = "";
-            if (unavailableTutorErrorMsg == null) unavailableTutorErrorMsg = "";
+
+            if (existTutorErrorMsg == null) {
+                existTutorErrorMsg = "";
+            }
+            if (unavailableTutorErrorMsg == null) {
+                unavailableTutorErrorMsg = "";
+            }
 
         %>
-        
+
         <div id="topBar">
             <span>
                 <a href="main.jsp" id="logo">UTSTutor</a>
@@ -42,18 +45,18 @@
             </div>
             <a href="logout.jsp" class="logout"><i class="material-icons">exit_to_app</i></a>
         </div>
-        
+
         <div id="content">
             <h1>Create a Booking</h1>
             <form method="POST" action="createBookingAction.jsp">
                 <table>
                     <tr>
                         <td>Tutor Email: </td>
-                        <%  if (email != null) { %>
+                        <%  if (email != null) {%>
                         <td><input type="text" value="<%=email%>" name="email"></td>
-                        <%  } else {  %>
+                            <%  } else {  %>
                         <td><input type="text" name="email"></td>
-                        <%  }  %>
+                            <%  }%>
                         <td>
                             <span class="errorText"><%=existTutorErrorMsg%></span>
                             <span class="errorText"><%=unavailableTutorErrorMsg%></span>
@@ -66,11 +69,11 @@
                 </table>
             </form>
         </div>
-    
-                    
-        <%  
-            // ROUTE PROTECTION
-            
+
+
+        <%
+                    // ROUTE PROTECTION
+
                 } else {
                     // even if logged in, users should not be able to access this page
                     response.sendRedirect("main.jsp");

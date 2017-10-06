@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/register.css">
-        <title>WSD - Assignment 1: Initial Register Page</title>
+        <title>WSD - Assignment 1: Register Page</title>
     </head>
     <body>
         <%
@@ -14,7 +14,7 @@
             String dobErrorMsg = (String) session.getAttribute("dobErrorMsg");
             String subjectErrorMsg = (String) session.getAttribute("subjectErrorMsg");
             String existRegisterErrorMsg = (String) session.getAttribute("existRegisterErrorMsg");
-            
+
             if (nameErrorMsg == null || emailErrorMsg == null || passwordErrorMsg == null || dobErrorMsg == null || subjectErrorMsg == null || existRegisterErrorMsg == null) {
                 nameErrorMsg = "";
                 emailErrorMsg = "";
@@ -23,9 +23,9 @@
                 subjectErrorMsg = "";
                 existRegisterErrorMsg = "";
             }
-            if (session.getAttribute("student")==null && session.getAttribute("tutor")==null) {
+            if (session.getAttribute("student") == null && session.getAttribute("tutor") == null) {
         %>
-        
+
         <div id="topBar">
             <span>
                 <a href="index.jsp" id="logo">UTSTutor</a>
@@ -83,32 +83,18 @@
                     <tr>
                         <td><input type="Submit" value="Submit" class="button"></td>
                     </tr>
-                    <!--
-                    <label>Full Name:</label> <input type="text" name="name" placeholder="e.g. John Smith"><br>
-                    <label>Email:</label> <input type="text" name="email" placeholder="e.g. johnsmith@email.com"><br>
-                    <label>Password:</label> <input type="password" name="password"> <br>
-                    <label>Date of birth:</label> <input type="text" name="dob" placeholder="e.g. DD/MM/YYYY"><br>
-                    <label>User type:</label>
-                        <select id="userType" name="userType">
-                            <option value="Student" selected>Student</option>
-                            <option value="Tutor">Tutor</option>
-                        </select>                    
-                    <br>
-                    <input type="Submit" value="Submit" class="button">
-                    -->
-                    
                 </table>
             </form>                     
 
         </div>
-    
-                
-        <%  
-            // ROUTE PROTECTION
+
+
+        <%
+                // ROUTE PROTECTION
             } else {
                 response.sendRedirect("main.jsp");
             }
         %>
-    <script src="JavaScript/register.js"></script>
+        <script src="JavaScript/register.js"></script>
     </body>
 </html>
