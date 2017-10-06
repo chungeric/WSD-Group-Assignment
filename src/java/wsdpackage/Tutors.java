@@ -14,8 +14,8 @@ import javax.xml.transform.stream.StreamSource;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "tutors")
 public class Tutors implements Serializable {
-    @XmlElement(name = "name")
-    private String name;
+//    @XmlElement(name = "name")
+//    private String name;
 
     @XmlElement(name = "tutor")
     private ArrayList<Tutor> list = new ArrayList<Tutor>();

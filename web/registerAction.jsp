@@ -70,7 +70,7 @@
                     session.setAttribute("emailErrorMsg", "Invalid email address");         
                     }
                     if (!validator.validatePassword(password)) {
-                    session.setAttribute("passwordErrorMsg", "Invalid password");         
+                    session.setAttribute("passwordErrorMsg", "Password must be 6 or more characters");         
                     }  
                     if (!validator.validateDob(dob)) {
                     session.setAttribute("dobErrorMsg", "Invalid date of birth");         
@@ -94,7 +94,7 @@
             else {
                 if (!validator.validateSubject(subject))
                 {
-                    session.setAttribute("subjectErrorMsg", "Please choose a subject");
+                    session.setAttribute("subjectErrorMsg", "Must select a subject of specialty as a tutor");
                     response.sendRedirect("register.jsp");
                 }
 

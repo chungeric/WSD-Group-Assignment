@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl href="WEB-INF/tutors.xsl"?>
-<!--<tutors xmlns="http://www.uts.edu.au/31284/wsd-assg1"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 tutors.xsd"> -->
-<tutors>
+<tutors
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="tutors.xsd"> 
+<!--<tutors>-->
         <tutor>
             <name>Chris Burney</name>
             <email>chrisburney@tutor.com</email>

@@ -9,8 +9,8 @@ import java.io.Serializable;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "bookings")
 public class Bookings implements Serializable {
-    @XmlElement(name = "name")
-    private String name;
+//    @XmlElement(name = "name")
+//    private String name;
     
     @XmlElement(name = "booking")
     private ArrayList<Booking> list = new ArrayList<Booking>();
