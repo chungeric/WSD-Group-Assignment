@@ -10,7 +10,7 @@
         <table class="tableResults">
             <thead>
                 <tr>
-                    <td>Name</td><td>Email</td><td>Subject</td><td>Status</td>
+                    <td>Tutor Name</td><td>Tutor Email</td><td>Subject</td><td>Status</td>
                 </tr>
             </thead>
             <tbody>

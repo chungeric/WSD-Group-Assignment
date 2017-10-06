@@ -67,7 +67,7 @@ select {
 
 .button {
     position: relative;
-    top: 2em;
+    top: 1em;
     font-size: 14pt;
     color: #272727;
     background-color: #ECECEC;
@@ -93,4 +93,9 @@ select {
     font-size: 8pt;
     font-style: italic;
     color: #FF0000;
+}
+
+.note {
+    color: #525050;
+    font-weight: bold;
 }

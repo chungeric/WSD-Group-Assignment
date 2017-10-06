@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<students 
-    xmlns="http://www.uts.edu.au/31284/wsd-assg1"
+<students 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 students.xsd">-->
-<students>
+    xsi:noNamespaceSchemaLocation="students.xsd">
+<!--<students>-->
     <student>
         <name>Steven Walker</name>
         <email>swalker@student.com</email>

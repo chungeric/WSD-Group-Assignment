@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="CSS/mainStyle.css">
+        <link rel="stylesheet" type="text/css" href="CSS/main.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>WSD - Assignment 1: Create Booking Page</title>
     </head>
@@ -24,6 +24,12 @@
             String subject = request.getParameter("subject");
             String status = request.getParameter("status");
             
+            String existTutorErrorMsg = (String) session.getAttribute("existTutorErrorMsg");
+            String unavailableTutorErrorMsg = (String) session.getAttribute("unavailableTutorErrorMsg");
+            
+            if (existTutorErrorMsg == null) existTutorErrorMsg = "";
+            if (unavailableTutorErrorMsg == null) unavailableTutorErrorMsg = "";
+
         %>
         
         <div id="topBar">
@@ -48,19 +54,17 @@
                         <%  } else {  %>
                         <td><input type="text" name="email"></td>
                         <%  }  %>
+                        <td>
+                            <span class="errorText"><%=existTutorErrorMsg%></span>
+                            <span class="errorText"><%=unavailableTutorErrorMsg%></span>
+                        </td>
                     </tr>
-                    <!--<tr>
-                        <td><input type="hidden" value="<%=name%>" name="name"></td>
-                        <td><input type="hidden" value="<%=subject%>" name="subject"></td>
-                        <td><input type="hidden" value="<%=status%>" name="status"></td>
-                    </tr>-->
                     <tr>
                         <td></td>
                         <td><input type="submit" value="Create booking" class="button"></td>
                     </tr>
                 </table>
             </form>
-            Remember: display tutor is not available or tutor does not exist error messages if booking fails
         </div>
     
                     

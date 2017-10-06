@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="bookings.xsl"?>
-<!--<bookings xmlns="http://www.uts.edu.au/31284/wsd-assg1"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-assg1 bookings.xsd">-->
-<bookings>
+<bookings 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="bookings.xsd">
+<!--<bookings>-->
     <!--Sample bookings in project folder-->
 </bookings>
 

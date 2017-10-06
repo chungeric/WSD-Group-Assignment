@@ -42,6 +42,15 @@ public class BookingCache {
         fout.close();
     }
     
+    public void saveBookings() throws JAXBException, IOException {
+        JAXBContext jc = JAXBContext.newInstance(Bookings.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        FileOutputStream fout = new FileOutputStream(filePath);
+        m.marshal(bookings, fout);
+        fout.close();
+    }
+    
     public Bookings getBookings(){
         return bookings;
     }

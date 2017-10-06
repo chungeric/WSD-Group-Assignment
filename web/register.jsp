@@ -33,12 +33,10 @@
         </div>
         <div id="content">
             <h1>Register</h1>
-            <span class="errorText"><%=existRegisterErrorMsg%></span><span class="errorText"><%=subjectErrorMsg%></span><br>
+            <span class="note">Note: You must be at least seventeen years old to register</span>
             <form method="POST" action="registerAction.jsp">
+                <input type="hidden" name="formCheck" value="check">
                 <table>
-                    <tr>
-                        <td><input type="hidden" name="formCheck" value="check"><span class="errorText"></span></td>
-                    </tr>
                     <tr>
                         <td>Full Name:</td>
                         <td><input type="text" name="name" placeholder="e.g. John Smith"></td>
@@ -65,7 +63,8 @@
                             <select id="userType" name="userType">
                                 <option value="Student" selected>Student</option>
                                 <option value="Tutor">Tutor</option>
-                            </select> 
+                            </select>
+                            <span class="errorText"><%=existRegisterErrorMsg%></span><span class="errorText"><%=subjectErrorMsg%></span>
                         </td>
                     </tr>
                     <tr>

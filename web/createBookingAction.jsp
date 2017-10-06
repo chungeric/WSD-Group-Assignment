@@ -38,22 +38,20 @@
             String bookingsFilePath = application.getRealPath("WEB-INF/bookings.xml");  
             String tutorsFilePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
+        
         <jsp:useBean id="bookingCache" class="wsdpackage.BookingCache" scope="application">
         <jsp:setProperty name="bookingCache" property="filePath" value="<%=bookingsFilePath%>"/>
         </jsp:useBean>
         <jsp:useBean id="tutorCache" class="wsdpackage.TutorCache" scope="application">
         <jsp:setProperty name="tutorCache" property="filePath" value="<%=tutorsFilePath%>"/>
         </jsp:useBean>
-        
-        <!-- Validate Booking Details in Validator Java Bean here using regular expression checks in the Javabean -->
-        
-        
-        
-        
+                   
         <%
             Bookings bookings = bookingCache.getBookings();
             Tutors tutors = tutorCache.getTutors();
             Tutor tutor = tutors.getTutorByEmail(tutorEmail);
+            
+            session.setAttribute("existTutorErrorMsg", "");
             
             // The tutor exists and is available, we can create a booking with them
             if (tutor != null && tutor.getStatus().equals("Available")) {
@@ -61,6 +59,9 @@
                 String tutorSubject = tutor.getSubject();
                 String studentName = student.getName();
                 String studentEmail = student.getEmail();
+                
+                // gets the amount of bookings already in bookingsCache and adds 1
+                // i.e. if 1 there is booking already, new booking ID will be 2
                 int bookingID = bookingCache.getBookings().getList().size() + 1;
                 
                 // need to update tutor's status to Unavailable
@@ -71,9 +72,21 @@
                 Booking booking = new Booking(bookingID, tutorName, tutorEmail, tutorSubject, studentName, studentEmail, "active");
                 bookings.addBooking(booking);
                 bookingCache.updateXML(bookings, bookingsFilePath);
+                
+                session.setAttribute("existTutorErrorMsg", "");
+                session.setAttribute("unavailableTutorErrorMsg", "");
+                
                 response.sendRedirect("bookings.jsp");
                 
             } else {
+                if (tutor == null) {
+                    session.setAttribute("existTutorErrorMsg", "Tutor does not exist");
+                    session.setAttribute("unavailableTutorErrorMsg", "");
+                } else {
+                    session.setAttribute("unavailableTutorErrorMsg", "Tutor is not available");
+                    session.setAttribute("existTutorErrorMsg", "");
+                }
+                
                 response.sendRedirect("createBooking.jsp");
             }
         %>
