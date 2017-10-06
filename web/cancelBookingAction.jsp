@@ -63,7 +63,7 @@
             // straight away. Maybe find a way to do this line only once the XML updates have been made?
             response.sendRedirect("bookings.jsp");
         %>
-        
+           
         
         <%  
             // ROUTE PROTECTION
