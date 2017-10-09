@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Booking implements Serializable {
     
     @XmlElement(name = "bookingID")
